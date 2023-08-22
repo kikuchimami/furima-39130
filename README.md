@@ -27,20 +27,18 @@
 ### Association
 belongs_to: purchase
 
-## comments テーブル
-| Colum     | Type      | Options                        |
-| --------- | --------- | ------------------------------ |
-| text      | text      | null: false                    |
+## Addresses テーブル
+| Colum                 | Type      | Options                        |
+| --------------------- | --------- | ------------------------------ |
+| shipping address      | text      | null: false                    |
 
 ### Association
--has_many :items
-belongs_to :items
+belongs_to :orders
 
-## purchace テーブル
+## orders テーブル
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | credit information | string     | null: false                    |
-| shipping address   | text       | null: false                    |
 
 ### Association
-belongs_to: purchase
+has_one :items
