@@ -1,13 +1,14 @@
 ## usersテーブル
 
-| Column                | Type   | Options                   |
-| --------------------- | ------ | ------------------------- |
-| email                 | string | null: false, unique: true |
-| encrypted_password    | string | null: false               |
-| password_confirmation |
-| name                  | string | null: false               |
-| name(KANA)            | string | null: false               |
-| birthday              | string | null: false               |
+| Column                    | Type   | Options                   |
+| ------------------------- | ------ | ------------------------- |
+| email                     | string | null: false,              |
+| encrypted_password        | string | null: false               |
+| family_name(ZENKAKU)      | string | null: false               |
+| last name(ZENKAKU)        | string | null: false               |
+| KANA_family_name(ZENKAKU) | string | null: false               |
+| KANA_last_name(ZENKAKU)   | string | null: false               |
+| birthday                  | date   | null: false               |
 
 ### Association
 
@@ -17,20 +18,29 @@
 ## items テーブル
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
-| name               | string     | null: false                    |
-| title              | string     | null: false                    |
-| condition          | string     | null: false                    |
-| shipping charge    | string     | null: false                    |
-| shipping area      | string     | null: false                    |
-| shipment data      | string     | null: false                    | 
+| product_name       | string     | null: false                    |
+| price              | integer    | null: false                    |
+| explanation        | text       | null: false                    |
+| category           | integer    | null, false                    |
+| condition          | integer    | null, false                    |
+| shipping charge    | integer    | null: false                    |
+| shipping area      | integer    | null: false                    |
+| shipment data      | integer    | null: false                    |
+| user               | references | null: false                    |
 
 ### Association
 belongs_to: purchase
 
 ## Addresses テーブル
-| Colum                 | Type      | Options                        |
-| --------------------- | --------- | ------------------------------ |
-| shipping address      | text      | null: false                    |
+| Colum                 | Type       | Options                        |
+| --------------------- | ---------- | ------------------------------ |
+| postcode              | string     | null: false                    |
+| prefectures           | integer    | null: false                    |
+| city                  | string     | null: false                    |
+| street_address        | string     | null: false                    |
+| building_name         | string     |                                |
+| phone_number          | string     | null: false                    |
+| purchase_history      | references | null: false, foreign_key :true |
 
 ### Association
 belongs_to :orders
@@ -38,7 +48,9 @@ belongs_to :orders
 ## orders テーブル
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
-| credit information | string     | null: false                    |
+| user               | references | null: false, foreign_key :true |
+| product            | references | null: false, foreign_key :true |
+
 
 ### Association
 has_one :items
