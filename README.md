@@ -1,46 +1,24 @@
-## usersテーブル
+# README
 
-| Column                | Type   | Options                   |
-| --------------------- | ------ | ------------------------- |
-| email                 | string | null: false, unique: true |
-| encrypted_password    | string | null: false               |
-| password_confirmation |
-| name                  | string | null: false               |
-| name(KANA)            | string | null: false               |
-| birthday              | string | null: false               |
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-### Association
+Things you may want to cover:
 
--has_many :items
--has_many :comments
+* Ruby version
 
-## items テーブル
-| Column             | Type       | Options                        |
-| ------------------ | ---------- | ------------------------------ |
-| name               | string     | null: false                    |
-| title              | string     | null: false                    |
-| condition          | string     | null: false                    |
-| shipping charge    | string     | null: false                    |
-| shipping area      | string     | null: false                    |
-| shipment data      | string     | null: false                    | 
+* System dependencies
 
-### Association
-belongs_to: purchase
+* Configuration
 
-## comments テーブル
-| Colum     | Type      | Options                        |
-| --------- | --------- | ------------------------------ |
-| text      | text      | null: false                    |
+* Database creation
 
-### Association
--has_many :items
-belongs_to :items
+* Database initialization
 
-## purchace テーブル
-| Column             | Type       | Options                        |
-| ------------------ | ---------- | ------------------------------ |
-| credit information | string     | null: false                    |
-| shipping address   | text       | null: false                    |
+* How to run the test suite
 
-### Association
-belongs_to: purchase
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
