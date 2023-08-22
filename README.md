@@ -22,12 +22,12 @@
 | product_name       | string     | null: false                    |
 | price              | integer    | null: false                    |
 | explanation        | text       | null: false                    |
-| category_id        | integer    | null, false                    |
-| condition_id       | integer    | null, false                    |
+| category_id        | integer    | null: false                    |
+| condition_id       | integer    | null: false                    |
 | shipping_charge_id | integer    | null: false                    |
 | shipping_area_id   | integer    | null: false                    |
 | shipment_data_id   | integer    | null: false                    |
-| user               | references | null: false, foreign_key :true                    |
+| user               | references | null: false, foreign_key :true |
 
 ### Association
 has_one :order
