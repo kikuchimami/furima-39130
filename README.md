@@ -4,16 +4,16 @@
 | ------------------------- | ------ | ------------------------- |
 | email                     | string | null: false,              |
 | encrypted_password        | string | null: false               |
-| family_name(ZENKAKU)      | string | null: false               |
-| last name(ZENKAKU)        | string | null: false               |
-| KANA_family_name(ZENKAKU) | string | null: false               |
-| KANA_last_name(ZENKAKU)   | string | null: false               |
+| family_name_ZENKAKU       | string | null: false               |
+| last name_ZENKAKU         | string | null: false               |
+| KANA_family_name_ZENKAKU  | string | null: false               |
+| KANA_last_name_ZENKAKU    | string | null: false               |
 | birthday                  | date   | null: false               |
 
 ### Association
 
 -has_many :items
--has_many :comments
+-has_many :addresses
 
 ## items テーブル
 | Column             | Type       | Options                        |
@@ -23,19 +23,19 @@
 | explanation        | text       | null: false                    |
 | category           | integer    | null, false                    |
 | condition          | integer    | null, false                    |
-| shipping charge    | integer    | null: false                    |
-| shipping area      | integer    | null: false                    |
-| shipment data      | integer    | null: false                    |
-| user               | references | null: false                    |
+| shipping_charge    | integer    | null: false                    |
+| shipping_area      | integer    | null: false                    |
+| shipment_data      | integer    | null: false                    |
+| user_id            | references | null: false                    |
 
 ### Association
-belongs_to: purchase
+belongs_to: orders
 
 ## Addresses テーブル
 | Colum                 | Type       | Options                        |
 | --------------------- | ---------- | ------------------------------ |
 | postcode              | string     | null: false                    |
-| prefectures           | integer    | null: false                    |
+| prefecture_id         | integer    | null: false                    |
 | city                  | string     | null: false                    |
 | street_address        | string     | null: false                    |
 | building_name         | string     |                                |
@@ -48,9 +48,10 @@ belongs_to :orders
 ## orders テーブル
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
-| user               | references | null: false, foreign_key :true |
-| product            | references | null: false, foreign_key :true |
+| user_id            | references | null: false, foreign_key :true |
+| item               | references | null: false, foreign_key :true |
 
 
 ### Association
-has_one :items
+belongs_to: users
+belongs_to: items
