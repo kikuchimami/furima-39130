@@ -1,24 +1,46 @@
-# README
+## usersテーブル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+| Column                | Type   | Options                   |
+| --------------------- | ------ | ------------------------- |
+| email                 | string | null: false, unique: true |
+| encrypted_password    | string | null: false               |
+| password_confirmation |
+| name                  | string | null: false               |
+| name(KANA)            | string | null: false               |
+| birthday              | string | null: false               |
 
-Things you may want to cover:
+### Association
 
-* Ruby version
+-has_many :items
+-has_many :comments
 
-* System dependencies
+## items テーブル
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| name               | string     | null: false                    |
+| title              | string     | null: false                    |
+| condition          | string     | null: false                    |
+| shipping charge    | string     | null: false                    |
+| shipping area      | string     | null: false                    |
+| shipment data      | string     | null: false                    | 
 
-* Configuration
+### Association
+belongs_to: purchase
 
-* Database creation
+## comments テーブル
+| Colum     | Type      | Options                        |
+| --------- | --------- | ------------------------------ |
+| text      | text      | null: false                    |
 
-* Database initialization
+### Association
+-has_many :items
+belongs_to :items
 
-* How to run the test suite
+## purchace テーブル
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| credit information | string     | null: false                    |
+| shipping address   | text       | null: false                    |
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Association
+belongs_to: purchase
