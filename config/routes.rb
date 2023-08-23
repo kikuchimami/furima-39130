@@ -4,8 +4,4 @@ Rails.application.routes.draw do
   root to: 'items#index'
   resources :articles
 end
-Rails.application.routes.draw do
-  devise_for :users
-  root to: index
-  
-end
+
