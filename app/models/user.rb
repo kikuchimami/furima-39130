@@ -13,13 +13,13 @@ class User < ApplicationRecord
 
   with_options presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: '全角文字を使用してください' } do
     validates :kana_family_name_zenkaku
-    validates :kana_family_name_zenkaku
+    validates :kana_last_name_zenkaku
     validates :family_name_zenkaku
     validates :last_name_zenkaku
   end
 
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
-    validates_format_of :password, with: PASSWORD_REGEX, message: 'には英字と数字の両方を含めて設定してください' 
+    validates_format_of :password, with: PASSWORD_REGEX 
 
   has_many :items
   has_many :orders
