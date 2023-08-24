@@ -8,6 +8,7 @@ end
 describe 'ユーザー新規登録' do
   context '正常系' do
     it 'nicknameとemail、passwordとpassword_confirmation、名字と名前、名字(カナ)と名前(カナ)、生年月日が存在すれば登録できる' do
+      expect(@user).to be_valid
     end
   end
 

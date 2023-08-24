@@ -11,7 +11,7 @@ class User < ApplicationRecord
   validates :kana_last_name_zenkaku, presence: true
   validates :birthday, presence: true
 
-  with_options presence: true, format: { with: /\A[ァ-ヶ一]+\z/, message: '全角文字を使用してください' } do
+  with_options presence: true, format: { with: /\A[ァ-ヶー]+\z/, message: '全角文字を使用してください' } do
     validates :kana_family_name_zenkaku
     validates :kana_last_name_zenkaku
   end
@@ -24,6 +24,5 @@ class User < ApplicationRecord
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
     validates_format_of :password, with: PASSWORD_REGEX 
 
-  has_many :items
-  has_many :orders
+
 end
