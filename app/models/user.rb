@@ -11,9 +11,12 @@ class User < ApplicationRecord
   validates :kana_last_name_zenkaku, presence: true
   validates :birthday, presence: true
 
-  with_options presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: '全角文字を使用してください' } do
+  with_options presence: true, format: { with: /\A[ァ-ヶ一]+\z/, message: '全角文字を使用してください' } do
     validates :kana_family_name_zenkaku
     validates :kana_last_name_zenkaku
+  end
+
+  with_options presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: '全角文字を使用してください' } do
     validates :family_name_zenkaku
     validates :last_name_zenkaku
   end

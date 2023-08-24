@@ -17,7 +17,6 @@ describe 'ユーザー新規登録' do
       @user.valid?
     expect(@user.errors.full_messages).to include("Nickname can't be blank")
     end
-    end
     it 'emailが空では登録できない' do
       @user.email = ''
       @user.valid?
@@ -52,9 +51,15 @@ describe 'ユーザー新規登録' do
       @user.valid?
       expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
     end
-    it 'passwordが、半角英数混合でないと登録できない' do
-      @user.password = '00000'
-      @user.password_confirmation = '00000'
+    it '英字のみのパスワードでは登録できない' do
+      @user.password = 'aaaaaa'
+      @user.password_confirmation = 'aaaaaa'
+      @user.valid?
+      expect(@user.errors.full_messages).to include('Password is invalid')
+    end
+    it '数字のみのパスワードでは登録できない' do
+      @user.password = '000000'
+      @user.password_confirmation = '000000'
       @user.valid?
       expect(@user.errors.full_messages).to include('Password is invalid')
     end
@@ -98,10 +103,21 @@ describe 'ユーザー新規登録' do
       @user.valid?
       expect(@user.errors.full_messages).to include("Kana last name zenkaku 全角文字を使用してください")
     end
+    it '名字カナ(全角)にカタカナ以外の文字（平仮名・漢字・英数字・記号）が含まれていると登録できない' do
+    @user.kana_last_name_zenkaku = 'やまだ' 
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Kana last name zenkaku 全角文字を使用してください")
+    end
+    it '名前カナ(全角)にカタカナ以外の文字（平仮名・漢字・英数字・記号）が含まれていると登録できない' do
+    @user.kana_last_name_zenkaku = 'たろう' 
+    @user.valid?
+    expect(@user.errors.full_messages).to include("Kana last name zenkaku 全角文字を使用してください")
+    end
     it '生年月日の入力がないと、登録できない' do
       @user.birthday = ''
       @user.valid?
       expect(@user.errors.full_messages).to include("Birthday can't be blank")
     end
   end
+end
 end
