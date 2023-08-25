@@ -28,6 +28,11 @@ describe 'ユーザー新規登録' do
       @user.valid?
       expect(@user.errors.full_messages).to include("Password can't be blank")
     end
+    it 'passwordが全角では登録できない' do
+      @user.password = '　'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Password is invalid")
+    end
     it 'passwordとpassword_confirmationが不一致では登録できない' do
       @user.password = '123456'
       @user.password_confirmation = '1234567'
