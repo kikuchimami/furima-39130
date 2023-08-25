@@ -21,7 +21,7 @@ describe 'ユーザー新規登録' do
     it 'emailが空では登録できない' do
       @user.email = ''
       @user.valid?
-      expect(@user.errors.full_messages).to include
+      expect(@user.errors.full_messages).to include("Email can't be blank")
     end
     it 'passwordが空では登録できない' do
       @user.password = ''
@@ -29,7 +29,7 @@ describe 'ユーザー新規登録' do
       expect(@user.errors.full_messages).to include("Password can't be blank")
     end
     it 'passwordが全角では登録できない' do
-      @user.password = '　'
+      @user.password = 'あ'
       @user.valid?
       expect(@user.errors.full_messages).to include("Password is invalid")
     end
