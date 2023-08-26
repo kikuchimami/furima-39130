@@ -20,5 +20,5 @@ class Item < ApplicationRecord
   validates :item_image, presence: true
   
   has_one_attached :item_image
-  has_one :purchase
+  #has_one :purchase
 end
