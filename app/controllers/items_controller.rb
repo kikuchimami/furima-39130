@@ -1,9 +1,9 @@
 class ItemsController < ApplicationController
-  #before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_item, only: [:show]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    #@item = Item.all
+    @item = Item.all
   end
 
   def new
