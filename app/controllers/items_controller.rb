@@ -23,24 +23,24 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    redirect_to root_path if current_user != @item.user||@item.purchase != nil
+    #redirect_to root_path if current_user != @item.user||@item.purchase != nil
   end
 
   def update
-    if @item.update(item_params)
-      redirect_to item_path(@item), notice: "商品情報が更新されました。"
-    else
-      render :edit, status: :unprocessable_entity
-    end
+    # #if @item.update(item_params)
+    #   redirect_to item_path(@item), notice: "商品情報が更新されました。"
+    # else
+    #   render :edit, status: :unprocessable_entity
+    # end
   end
 
   def destroy
-    if @item.user == current_user
-      @item.destroy
-      redirect_to root_path, notice: "商品が削除されました。"
-    else
-      redirect_to root_path, alert: "他のユーザーの商品は削除できません。"
-    end
+    # if @item.user == current_user
+    #   @item.destroy
+    #   redirect_to root_path, notice: "商品が削除されました。"
+    # else
+    #   redirect_to root_path, alert: "他のユーザーの商品は削除できません。"
+    # end
   end
 
   private
