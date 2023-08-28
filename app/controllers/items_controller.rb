@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   #before_action :check_owner, only: [:edit, :update, :destroy]
 
@@ -37,12 +37,12 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    # if @item.user == current_user
-    #   @item.destroy
-    #   redirect_to root_path, notice: "商品が削除されました。"
-    # else
-    #   redirect_to root_path, alert: "他のユーザーの商品は削除できません。"
-    # end
+    if @item.user == current_user
+      @item.destroy
+      redirect_to root_path, notice: "商品が削除されました。"
+    else
+      redirect_to root_path, alert: "他のユーザーの商品は削除できません。"
+    end
   end
 
   private
