@@ -5,6 +5,7 @@ window.addEventListener('load', () => {
   const tax = 0.1
   priceInput.addEventListener("input", () => {
     const inputValue = priceInput.value
+    console.log(inputValue)
     addTaxDom.innerHTML = Math.floor(inputValue * tax)
     totalInput.innerHTML = Math.floor(inputValue - addTaxDom.innerHTML )
 
