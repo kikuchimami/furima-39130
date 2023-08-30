@@ -33,7 +33,7 @@
 has_one :order
 -belongs_to : user
 
-## Addresses テーブル
+## addresses テーブル
 | Colum                 | Type       | Options                        |
 | --------------------- | ---------- | ------------------------------ |
 | postcode              | string     | null: false                    |

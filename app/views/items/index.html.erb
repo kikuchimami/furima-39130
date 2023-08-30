@@ -130,12 +130,12 @@
           <% @item.each do |item| %>
       <li class='list'>
         <%= link_to item_path(item) do %>
-        <div class='item-image-content'>
+        <div class='item-img-content'>
           <%= image_tag item.item_image, class: "item-img" %>
-          <%# <% if   !item.order.nil? %>
-          <%# <div class='sold-out'> %>
-             <%# <span>Sold Out!!</span> %>
-          <%# </div> %>
+           <% if   !item.order.nil? %>
+           <div class='sold-out'>
+             <span>Sold Out!!</span>
+          </div>
           <% end %> 
         </div>
         <div class='item-info'>
@@ -149,7 +149,7 @@
             </div>
           </div>
         </div>
-        <%# end %>
+        <% end %>
       </li>
       <% end %>
 
@@ -181,3 +181,4 @@
   <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
 <% end %>
 <%= render "shared/footer" %>
+
