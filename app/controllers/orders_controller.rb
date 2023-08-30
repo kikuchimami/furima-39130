@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
   def index
     @order_address = OrderAddress.new
     Payjp.api_key = ENV["PAYJP_PUBLIC_KEY"]
-    return redirect_to root_path if @item_already_purchased
+    return redirect_to root_path if @item.order.present? || current_user == @item.user
   end
 
   def create
